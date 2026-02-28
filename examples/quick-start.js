@@ -15,18 +15,18 @@ const bazik = new Bazik({
 async function main() {
   try {
     // ── 1. Authenticate ──────────────────────────────────────────────────
-    console.log("🔑 Authenticating...");
+    console.log("Authenticating...");
     const auth = await bazik.authenticate();
-    console.log(`   ✓ Token obtained (expires: ${new Date(auth.expires_at).toISOString()})`);
+    console.log(`   Token obtained (expires: ${new Date(auth.expires_at).toISOString()})`);
 
     // ── 2. Check wallet balance ──────────────────────────────────────────
-    console.log("\n💰 Checking wallet balance...");
+    console.log("\nChecking wallet balance...");
     const wallet = await bazik.wallet.getBalance();
     console.log(`   Available: ${wallet.available} ${wallet.currency}`);
     console.log(`   Reserved:  ${wallet.reserved} ${wallet.currency}`);
 
     // ── 3. Create a payment ──────────────────────────────────────────────
-    console.log("\n💳 Creating MonCash payment...");
+    console.log("\nCreating MonCash payment...");
     const payment = await bazik.payments.create({
       gdes: 100.0,
       description: "Test payment",
@@ -42,20 +42,20 @@ async function main() {
     console.log(`   Status:      ${payment.status}`);
 
     // ── 4. Get a transfer quote ──────────────────────────────────────────
-    console.log("\n💱 Getting transfer quote...");
+    console.log("\nGetting transfer quote...");
     const quote = await bazik.transfers.getQuote(500, "moncash");
     console.log(`   Delivery: ${quote.delivery_amount} HTG`);
     console.log(`   Fee:      ${quote.fee} HTG (${quote.fee_percentage}%)`);
     console.log(`   Total:    ${quote.total_cost} HTG`);
 
-    console.log("\n✅ All done!");
+    console.log("\nAll done!");
   } catch (err) {
     if (err instanceof BazikInsufficientFundsError) {
-      console.error("❌ Insufficient funds — top up your Bazik wallet.");
+      console.error("Insufficient funds — top up your Bazik wallet.");
     } else if (err instanceof BazikError) {
-      console.error(`❌ Bazik error [${err.status}]: ${err.message}`);
+      console.error(`Bazik error [${err.status}]: ${err.message}`);
     } else {
-      console.error("❌ Unexpected error:", err);
+      console.error("Unexpected error:", err);
     }
   }
 }

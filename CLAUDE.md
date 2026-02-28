@@ -21,7 +21,17 @@ There is no build step. The SDK ships as plain JavaScript with a `.d.ts` file fo
 
 ## Code Structure
 
-Everything lives in **one file**: `src/index.js`. This is intentional — it makes the SDK easy to vendor, debug, and understand. Don't split it into multiple files unless the codebase grows past ~800 lines.
+The SDK logic lives in **one file**: `src/index.js` (CommonJS). An ESM wrapper at `src/index.mjs` re-exports everything for `import` users. Don't split the source into multiple files unless the codebase grows past ~800 lines.
+
+```
+src/index.js      — All SDK logic (CommonJS, module.exports)
+src/index.mjs     — ESM wrapper (re-exports from index.js)
+src/index.d.ts    — TypeScript type definitions
+```
+
+The `exports` field in `package.json` handles dual CJS/ESM resolution:
+- `require("bazik-sdk")` → `src/index.js`
+- `import { Bazik } from "bazik-sdk"` → `src/index.mjs`
 
 ### Internal flow
 
@@ -53,7 +63,7 @@ async newMethod(params) {
 }
 ```
 
-Then add types in `src/index.d.ts` and tests in `tests/bazik.test.js`.
+Then add types in `src/index.d.ts`, re-export in `src/index.mjs` if needed, and tests in `tests/bazik.test.js`.
 
 ### Test pattern
 
@@ -75,6 +85,7 @@ it("should do something", async () => {
 4. **Wallet validation**: Must be 8 or 11 digits. The regex is `/^\d{8}(\d{3})?$/`.
 5. **MonCash limit**: 75,000 HTG max per payment. Validated client-side.
 6. **The `/moncash/token` endpoint creates payments** (confusing name) — it's not an auth endpoint.
+7. **ESM wrapper**: When adding new public exports to `src/index.js`, also add them to `src/index.mjs`.
 
 ## API Documentation
 

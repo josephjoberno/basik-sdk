@@ -20,6 +20,7 @@
 ## Features
 
 - **Zero dependencies** — Uses native `fetch` (Node.js 18+)
+- **ESM & CommonJS** — Works with `import` and `require` out of the box
 - **Automatic token management** — Handles auth token lifecycle, refresh, and retry
 - **Full TypeScript support** — Complete `.d.ts` type definitions included
 - **Input validation** — Catches errors before they hit the API
@@ -37,6 +38,10 @@ npm install bazik-sdk
 ## Quick Start
 
 ```javascript
+// ESM
+import { Bazik } from "bazik-sdk";
+
+// CommonJS
 const { Bazik } = require("bazik-sdk");
 
 const bazik = new Bazik({
@@ -156,14 +161,14 @@ console.log(`Reserved: ${wallet.reserved} ${wallet.currency}`);
 The SDK provides typed error classes for precise error handling:
 
 ```javascript
-const {
+import {
   Bazik,
   BazikError,                  // Base error
   BazikAuthError,              // 401 — Invalid credentials
   BazikValidationError,        // 400 — Invalid input
   BazikInsufficientFundsError, // 402 — Not enough balance
   BazikRateLimitError,         // 429 — Too many requests
-} = require("bazik-sdk");
+} from "bazik-sdk";
 
 try {
   await bazik.payments.create({ gdes: 500 });
@@ -219,7 +224,7 @@ No external test framework required — uses Node.js built-in test runner.
 
 ## Requirements
 
-- Node.js ≥ 18.0.0 (for native `fetch`)
+- Node.js >= 18.0.0 (for native `fetch`)
 
 ## Links
 
@@ -230,4 +235,3 @@ No external test framework required — uses Node.js built-in test runner.
 ## License
 
 MIT — see [LICENSE](LICENSE) for details.
-# basik-sdk

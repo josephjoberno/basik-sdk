@@ -262,3 +262,5 @@ export declare class BazikAuthError extends BazikError {}
 export declare class BazikValidationError extends BazikError {}
 export declare class BazikInsufficientFundsError extends BazikError {}
 export declare class BazikRateLimitError extends BazikError {}
+
+export default Bazik;

@@ -167,6 +167,12 @@ class Bazik {
    * @param {(token: string) => void} [config.onTokenRefresh] — Callback when token is refreshed
    *
    * @example
+   * // CommonJS
+   * const { Bazik } = require("bazik-sdk");
+   *
+   * // ESM
+   * import { Bazik } from "bazik-sdk";
+   *
    * const bazik = new Bazik({
    *   userID: "bzk_c5b754a0_1757383229",
    *   secretKey: "sk_5b0ff521b331c73db55313dc82f17cab",

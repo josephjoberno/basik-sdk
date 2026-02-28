@@ -14,14 +14,19 @@ Currency: HTG (Haitian Gourdes). All amounts are in HTG.
 npm install bazik-sdk
 ```
 
-Requires Node.js >= 18 (native fetch).
+Requires Node.js >= 18 (native fetch). Works with both ESM and CommonJS.
 
 ## Authentication
 
 POST /token with userID and secretKey returns a Bearer token valid for 24 hours. The SDK handles this automatically — just provide credentials at init.
 
 ```javascript
+// ESM
+import { Bazik } from "bazik-sdk";
+
+// CommonJS
 const { Bazik } = require("bazik-sdk");
+
 const bazik = new Bazik({ userID: "bzk_...", secretKey: "sk_..." });
 // Token is fetched and cached on first API call
 ```
@@ -79,9 +84,11 @@ GET    /wallet                   → Wallet balance
 
 ## File Structure
 
-src/index.js      — All SDK logic (single file)
+src/index.js      — All SDK logic (single file, CommonJS)
+src/index.mjs     — ESM wrapper (re-exports from index.js)
 src/index.d.ts    — TypeScript type definitions
 tests/bazik.test.js — Test suite (node:test, 36 tests)
+examples/quick-start.js — Usage example
 README.md         — User documentation
 AGENTS.md         — AI agent coding instructions
 CLAUDE.md         — Claude-specific guidance

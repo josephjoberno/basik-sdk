@@ -11,7 +11,8 @@ This is the official JavaScript/Node.js SDK for the **Bazik API**, a payment gat
 ```
 bazik-sdk/
 ├── src/
-│   ├── index.js        # Main SDK — single-file, all logic here
+│   ├── index.js        # Main SDK — single-file, all logic here (CommonJS)
+│   ├── index.mjs       # ESM wrapper — re-exports from index.js
 │   └── index.d.ts      # TypeScript declarations
 ├── tests/
 │   └── bazik.test.js   # Test suite (Node.js built-in test runner)
@@ -27,10 +28,11 @@ bazik-sdk/
 ### Key Design Decisions
 
 1. **Single-file SDK** — All logic lives in `src/index.js`. No internal module splitting. This keeps things simple and avoids bundler issues.
-2. **Zero dependencies** — Uses native `fetch` (Node.js 18+). No axios, no node-fetch.
-3. **Private class fields** — Credentials and tokens stored with `#private` fields. Never exposed.
-4. **Sub-modules** — The client exposes `bazik.payments`, `bazik.transfers`, and `bazik.wallet` as organized namespaces.
-5. **Auto-refresh** — Token refresh happens transparently. On 401, the SDK retries once after re-authenticating.
+2. **Dual CJS/ESM** — Source is CommonJS (`src/index.js`), with an ESM wrapper (`src/index.mjs`). The `exports` field in `package.json` routes `import` to `.mjs` and `require` to `.js`.
+3. **Zero dependencies** — Uses native `fetch` (Node.js 18+). No axios, no node-fetch.
+4. **Private class fields** — Credentials and tokens stored with `#private` fields. Never exposed.
+5. **Sub-modules** — The client exposes `bazik.payments`, `bazik.transfers`, and `bazik.wallet` as organized namespaces.
+6. **Auto-refresh** — Token refresh happens transparently. On 401, the SDK retries once after re-authenticating.
 
 ## Working With the Code
 
@@ -49,7 +51,8 @@ Tests use Node.js built-in `node:test` and `node:assert`. No external test frame
 3. Add input validation using `validateRequired()`, `validateAmount()`, `validateWallet()`.
 4. Call `this.#client._request(method, path, body)` — this handles auth, retries, and error mapping.
 5. Add TypeScript types in `src/index.d.ts`.
-6. Add tests in `tests/bazik.test.js`.
+6. If the new class/export is public, add it to `src/index.mjs` re-exports.
+7. Add tests in `tests/bazik.test.js`.
 
 ### Error Handling Pattern
 
@@ -85,11 +88,10 @@ Base URL: `https://api.bazik.io`
 
 ## Conventions
 
-- **No semicolons?** — We use semicolons. Standard JS style.
-- **Formatting** — 2-space indent. No trailing commas in function params.
+- **Formatting** — 2-space indent. Semicolons. Standard JS style.
 - **Naming** — `camelCase` for methods/variables, `PascalCase` for classes, `UPPER_SNAKE` for constants.
 - **JSDoc** — All public methods have JSDoc with `@param`, `@returns`, and `@example`.
-- **Exports** — CommonJS (`module.exports`). The SDK targets Node.js, not browsers.
+- **Exports** — Source is CommonJS (`module.exports`). ESM consumers use the `.mjs` wrapper. Both are exposed via the `exports` field in `package.json`.
 
 ## Important Constraints
 
