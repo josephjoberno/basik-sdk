@@ -45,10 +45,10 @@
   "homepage": "https://bazik.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bazik-io/bazik-sdk-js"
+    "url": "https://github.com/josephjoberno/basik-sdk"
   },
   "bugs": {
-    "url": "https://github.com/bazik-io/bazik-sdk-js/issues"
+    "url": "https://github.com/josephjoberno/basik-sdk/issues"
   },
   "engines": {
     "node": ">=18.0.0"
