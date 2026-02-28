@@ -1,6 +1,6 @@
 /**
  * Bazik SDK for JavaScript/Node.js
- * Official SDK for the Bazik API — MonCash & NatCash payments, transfers, and wallet management.
+ * Unofficial SDK for the Bazik API — MonCash & NatCash payments, transfers, and wallet management.
  *
  * @see https://bazik.io/docs/endpoints
  * @version 1.0.0

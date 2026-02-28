@@ -2,7 +2,7 @@
 
 ## What is this project?
 
-`bazik-sdk` is the official JavaScript SDK for **Bazik** (https://bazik.io), a payment API gateway for Haiti's mobile money ecosystem (MonCash by Digicel and NatCash). This SDK wraps the REST API with a clean, typed, zero-dependency Node.js client.
+`bazik-sdk` is an unofficial JavaScript SDK for **Bazik** (https://bazik.io), a payment API gateway for Haiti's mobile money ecosystem (MonCash by Digicel and NatCash). This SDK wraps the REST API with a clean, typed, zero-dependency Node.js client.
 
 ## Build & Test Commands
 

@@ -4,7 +4,7 @@ Instructions for AI coding agents working on this codebase.
 
 ## Project Overview
 
-This is the official JavaScript/Node.js SDK for the **Bazik API**, a payment gateway for MonCash and NatCash mobile money services in Haiti. The SDK wraps the REST API at `https://api.bazik.io` with a zero-dependency client.
+This is an unofficial JavaScript/Node.js SDK for the **Bazik API**, a payment gateway for MonCash and NatCash mobile money services in Haiti. The SDK wraps the REST API at `https://api.bazik.io` with a zero-dependency client.
 
 ## Architecture
 

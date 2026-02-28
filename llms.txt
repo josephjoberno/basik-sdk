@@ -1,6 +1,6 @@
 # bazik-sdk
 
-> Official JavaScript/Node.js SDK for the Bazik API — MonCash & NatCash payment gateway for Haiti.
+> Unofficial JavaScript/Node.js SDK for the Bazik API — MonCash & NatCash payment gateway for Haiti.
 
 ## Overview
 

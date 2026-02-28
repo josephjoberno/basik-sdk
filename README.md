@@ -2,7 +2,7 @@
   <img src="logo.svg" alt="Bazik SDK" width="320" />
 </p>
 
-<h3 align="center">Official JavaScript SDK for the Bazik API</h3>
+<h3 align="center">Unofficial JavaScript SDK for the Bazik API</h3>
 
 <p align="center">
   MonCash & NatCash payments, transfers, and wallet management for Haiti.
