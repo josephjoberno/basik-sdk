@@ -18,10 +18,12 @@
     }
   },
   "scripts": {
-    "test": "node --test tests/",
-    "test:verbose": "node --test --test-reporter spec tests/",
+    "test": "node --test tests/bazik.test.js",
+    "test:verbose": "node --test --test-reporter spec tests/bazik.test.js",
     "lint": "echo 'No linter configured'",
-    "example": "node examples/quick-start.js"
+    "example": "node examples/quick-start.js",
+    "release": "release-it",
+    "prepare": "husky"
   },
   "keywords": [
     "bazik",
@@ -52,9 +54,21 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "files": [
     "src/",
     "README.md",
-    "LICENSE"
-  ]
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^20.4.2",
+    "@commitlint/config-conventional": "^20.4.2",
+    "@release-it/conventional-changelog": "^10.0.5",
+    "husky": "^9.1.7",
+    "release-it": "^19.2.4"
+  }
 }
