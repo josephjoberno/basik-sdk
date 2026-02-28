@@ -22,8 +22,7 @@
     "test:verbose": "node --test --test-reporter spec tests/bazik.test.js",
     "lint": "echo 'No linter configured'",
     "example": "node examples/quick-start.js",
-    "release": "release-it",
-    "prepare": "husky"
+    "release": "release-it"
   },
   "keywords": [
     "bazik",
