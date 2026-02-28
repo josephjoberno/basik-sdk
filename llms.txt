@@ -1,0 +1,93 @@
+# bazik-sdk
+
+> Official JavaScript/Node.js SDK for the Bazik API — MonCash & NatCash payment gateway for Haiti.
+
+## Overview
+
+Bazik (https://bazik.io) is a payment API gateway that provides access to Haiti's mobile money services: MonCash (Digicel) and NatCash. This SDK wraps the REST API with a zero-dependency, typed Node.js client.
+
+Currency: HTG (Haitian Gourdes). All amounts are in HTG.
+
+## Installation
+
+```
+npm install bazik-sdk
+```
+
+Requires Node.js >= 18 (native fetch).
+
+## Authentication
+
+POST /token with userID and secretKey returns a Bearer token valid for 24 hours. The SDK handles this automatically — just provide credentials at init.
+
+```javascript
+const { Bazik } = require("bazik-sdk");
+const bazik = new Bazik({ userID: "bzk_...", secretKey: "sk_..." });
+// Token is fetched and cached on first API call
+```
+
+## Capabilities
+
+### Payments (bazik.payments)
+- create(params) → Create MonCash payment, get redirectUrl for customer (max 75,000 HTG)
+- verify(orderId) → Check payment status (pending/successful/failed/cancelled)
+- waitForCompletion(orderId, opts) → Poll until payment resolves
+- withdraw(params) → Send money to MonCash wallet (payout)
+- getBalance() → Account balance (available + reserved)
+
+### Transfers (bazik.transfers)
+- checkCustomer(wallet) → Verify MonCash wallet KYC status
+- moncash(params) → Send money via MonCash
+- natcash(params) → Send money via NatCash
+- getStatus(transactionId) → Transfer status (successful/processing/failed)
+- getQuote(amount, provider) → Fee calculation (5% platform fee)
+
+### Wallet (bazik.wallet)
+- getBalance() → Wallet balance
+
+## Error Classes
+
+- BazikError — Base error (any status)
+- BazikAuthError — 401 (bad credentials or expired token)
+- BazikValidationError — 400 (invalid input, caught client-side)
+- BazikInsufficientFundsError — 402 (not enough balance)
+- BazikRateLimitError — 429 (too many requests)
+
+## API Endpoints
+
+Base URL: https://api.bazik.io
+
+POST   /token                    → Authenticate
+POST   /moncash/token            → Create payment
+GET    /order/{orderId}          → Verify payment
+POST   /moncash/withdraw         → Withdraw to MonCash wallet
+GET    /balance                  → Account balance
+POST   /moncash/customers/status → Check customer KYC
+POST   /moncash/transfers        → MonCash transfer
+POST   /natcash/transfers        → NatCash transfer
+GET    /transfers/{id}           → Transfer status
+POST   /transfers/quote          → Fee quote
+GET    /wallet                   → Wallet balance
+
+## Constraints
+
+- Max payment amount: 75,000 HTG per transaction
+- Wallet format: 8 or 11 digits
+- Token TTL: 24 hours
+- Platform fee: 5% on transfers
+- Zero dependencies — native fetch only
+
+## File Structure
+
+src/index.js      — All SDK logic (single file)
+src/index.d.ts    — TypeScript type definitions
+tests/bazik.test.js — Test suite (node:test, 36 tests)
+README.md         — User documentation
+AGENTS.md         — AI agent coding instructions
+CLAUDE.md         — Claude-specific guidance
+llms.txt          — This file
+
+## Links
+
+- Docs: https://bazik.io/docs/endpoints
+- Site: https://bazik.io

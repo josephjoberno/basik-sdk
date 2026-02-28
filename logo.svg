@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="280" height="80" rx="14" fill="#0f0f1a"/>
+  <rect x="1" y="1" width="278" height="78" rx="13" fill="none" stroke="url(#grad)" stroke-width="1" opacity="0.4"/>
+  <!-- Icon: stylized B -->
+  <rect x="16" y="16" width="48" height="48" rx="12" fill="url(#grad)" opacity="0.12"/>
+  <text x="28" y="53" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="bold" fill="url(#grad)">B</text>
+  <!-- Main text -->
+  <text x="78" y="50" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="bold" fill="url(#grad)" letter-spacing="2">azik</text>
+  <!-- SDK badge -->
+  <rect x="210" y="28" width="52" height="24" rx="6" fill="url(#grad)" opacity="0.15"/>
+  <text x="220" y="45" font-family="'Courier New', Courier, monospace" font-size="13" font-weight="bold" fill="#a78bfa" letter-spacing="2">SDK</text>
+  <!-- Accent line -->
+  <line x1="78" y1="58" x2="195" y2="58" stroke="url(#grad2)" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,54 @@
+{
+  "name": "bazik-sdk",
+  "version": "1.0.0",
+  "description": "Official JavaScript/Node.js SDK for the Bazik API — MonCash & NatCash payments, transfers, and wallet management for Haiti.",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./src/index.js",
+      "import": "./src/index.js",
+      "types": "./src/index.d.ts"
+    }
+  },
+  "scripts": {
+    "test": "node --test tests/",
+    "test:verbose": "node --test --test-reporter spec tests/",
+    "lint": "echo 'No linter configured'",
+    "example": "node examples/quick-start.js"
+  },
+  "keywords": [
+    "bazik",
+    "moncash",
+    "natcash",
+    "haiti",
+    "payment",
+    "gateway",
+    "api",
+    "fintech",
+    "mobile-money",
+    "gourdes",
+    "htg",
+    "digicel",
+    "transfer",
+    "wallet"
+  ],
+  "author": "Bazik <support@bazik.io>",
+  "license": "MIT",
+  "homepage": "https://bazik.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bazik-io/bazik-sdk-js"
+  },
+  "bugs": {
+    "url": "https://github.com/bazik-io/bazik-sdk-js/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE"
+  ]
+}
