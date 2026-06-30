@@ -109,6 +109,31 @@ const natTransfer = await bazik.transfers.natcash({
 });
 ```
 
+### Withdraw to a MonCash Wallet
+
+Send money from your Bazik account to a customer's MonCash wallet (payout).
+
+```javascript
+const withdrawal = await bazik.payments.withdraw({
+  gdes: 500,                            // amount in HTG
+  wallet: "47556677",                   // recipient phone (8 or 11 digits)
+  customerFirstName: "Melissa",
+  customerLastName: "Francois",
+  description: "Weekly earnings",
+  referenceId: "PAYOUT-001",
+  customerEmail: "melissa@example.com",
+  webhookUrl: "https://mysite.com/webhook",
+});
+
+console.log("Transaction:", withdrawal.transaction_id);
+console.log("Status:     ", withdrawal.status);
+console.log("Total cost: ", withdrawal.total, withdrawal.currency);
+```
+
+Required fields: `gdes`, `wallet`, `customerFirstName`, `customerLastName`.
+The other fields are optional. The same typed errors apply — wrap calls in
+`try/catch` to handle `BazikInsufficientFundsError`, `BazikValidationError`, etc.
+
 ### Check Balance
 
 ```javascript
