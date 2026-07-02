@@ -1,6 +1,6 @@
 {
   "name": "bazik-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Unofficial JavaScript/Node.js SDK for the Bazik API — MonCash & NatCash payments, transfers, and wallet management for Haiti.",
   "main": "src/index.js",
   "module": "src/index.mjs",
